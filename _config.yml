@@ -17,7 +17,7 @@ timezone: Europe/Berlin
 # --------------------------
 title: ox7f's blog           # the main title
 
-tagline: interested in programming and cyber security.<br>Will post my write-ups and notes here (currently under construction) # it will display as the sub-title
+tagline: interested in programming and cyber security<br>will post my write-ups and notes here (currently under construction) # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   little blog for posting ctf-writeups and notes.
