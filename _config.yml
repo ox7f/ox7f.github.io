@@ -17,7 +17,7 @@ timezone: Europe/Berlin
 # --------------------------
 title: ox7f's Blog                     # the main title
 
-tagline: interested in programming and Cyber Security. Posting my write-ups and notes (Currently under construction) # it will display as the sub-title
+tagline: interested in programming and Cyber Security. Will post my write-ups and notes here (Currently under construction) # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   little blog for posting ctf-writeups and notes.
@@ -79,7 +79,7 @@ theme_mode:   # [light|dark]
 img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://cdn.jsdelivr.net/gh/ox7f/ox7f.github.io/profile.jpg
+avatar: https://avatars.githubusercontent.com/u/77727665?v=4
 
 # boolean type, the global switch for ToC in posts.
 toc: true

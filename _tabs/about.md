@@ -6,4 +6,5 @@ order: 4
 
 
 > Don't mind me
-> I'm just interested in programming and cyber security and I'm triyng my best ( ͡° ͜ʖ ͡°)
+> I'm just interested in programming and cyber security
+> Always triyng my best (  ͡° ͜ʖ ͡°)
