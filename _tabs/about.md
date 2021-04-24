@@ -5,4 +5,5 @@ order: 4
 ---
 
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+> Don't mind me
+> I'm just interested in programming and cyber security and I'm triyng my best ( ͡° ͜ʖ ͡°)
