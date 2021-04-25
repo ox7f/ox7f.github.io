@@ -12,7 +12,7 @@ The webpage looks like this:
 ![](/assets/img/blitzProb_web.png#center)
 
 ## Vulnerability
-Going through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request:
+If we go through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request and on a successful if  "pug.compile. The vulnerable code of the challenge:
 
 ``` javascript
 const path              = require('path');
@@ -42,7 +42,7 @@ router.post('/api/submit', (req, res) => {
 module.exports = router;
 ```
 
-After reviewing the `package.json` file we can see that "flat" “5.0.0” is installed, which suffers from a Prototype Pollution vulnerability via Abstract Syntax Tree. [Here](https://github.com/hughsk/flat/issues/105) you can find the PoC.
+After reviewing the `package.json` file we can see that "flat" “5.0.0” is installed, which suffers from a Prototype Pollution vulnerability via Abstract Syntax Tree. [Here](https://github.com/hughsk/flat/issues/105) you can find the PoC. To exploit this, we first need to trigger the “unflatten” function with our payload and then the “pug.compile” function so that the server runs our payload.
 
 ## Exploitation
 To exploit this vulnerability and read the flag, we simply open the web console and send the payload below to "/api/submit":
