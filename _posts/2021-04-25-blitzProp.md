@@ -1,4 +1,4 @@
-\---
+---
 title: BlitzProb
 date: 2021-04-25
 categories: \[web\]
@@ -10,7 +10,8 @@ toc: false
 This challenge contained a Prototype Pollution to RCE via AST Injection.<br>You can read more about it in this [blog](https://blog.p6.is/AST-Injection/) post
 
 The webpage looks as follows:
-![[/assets/img/blitzProp_web.png]]
+![](/assets/img/blitzProb_web.png#center)
+
 
 ## Vulnerability
 While going trough the source code we can see in the "challenge/routes/index.js" file, the "unflatten" function which is called after receiving a post request:
@@ -46,7 +47,7 @@ module.exports = router;
 After reviewing the "package.json" file we can see that "flat" “5.0.0” is installed which suffers from a Prototype Pollution vulnerability via Abstract Syntax Tree. [Here](https://github.com/hughsk/flat/issues/105) you can find the PoC.
 
 ## Exploitation
-To exploit this vulnerability and read the flag, we just sent the below payload to ""/api/submit":
+To exploit this vulnerability and read the flag, we just open the web console and sent the below payload to "/api/submit":
 
 ```javascript
 let CMD = "process.mainModule.require('child_process').execSync('cat /app/flag* >> /app/static/js/flag.txt')"
