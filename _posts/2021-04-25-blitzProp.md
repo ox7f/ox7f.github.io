@@ -12,7 +12,7 @@ The webpage looks like this:
 ![](/assets/img/blitzProb_web.png#center)
 
 ## Vulnerability
-If we go through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request and on a successful if   the "pug.compile" function. The vulnerable code of the challenge:
+If we go through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request and on a successful `if` the "pug.compile" function. The vulnerable code of the challenge:
 
 ``` javascript
 const path              = require('path');
