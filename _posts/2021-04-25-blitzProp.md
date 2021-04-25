@@ -1,6 +1,6 @@
 ---
 title: BlitzProb
-date: 2021-04-25
+date: 2021-04-25 10:13:00 +0200
 categories: [web]
 tags: [cyberapocalpyse2021]
 toc: false
