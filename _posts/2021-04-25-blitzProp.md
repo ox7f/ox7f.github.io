@@ -6,13 +6,13 @@ tags: [cyberapocalpyse2021]
 toc: false
 ---
 
-This challenge contained a Prototype Pollution to RCE via AST Injection. You can read more about it in this great [blog](https://blog.p6.is/AST-Injection/) post. (\* ^ ω ^)
+This challenge contains a Prototype Pollution to RCE via AST Injection. You can read more about it in this great [blog](https://blog.p6.is/AST-Injection/) post. (\* ^ ω ^)
 
 The webpage looks like this:
 ![](/assets/img/blitzProb_web.png#center)
 
 ## Vulnerability
-If we go through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request and on a successful if  "pug.compile. The vulnerable code of the challenge:
+If we go through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request and on a successful if   the "pug.compile" function. The vulnerable code of the challenge:
 
 ``` javascript
 const path              = require('path');
