@@ -1,8 +1,8 @@
 ---
 title: BlitzProb
 date: 2021-04-25
-categories: \[web\]
-tags: \[cyberapocalpyse2021\]
+categories: [web]
+tags: [cyberapocalpyse2021]
 toc: false
 ---
 
