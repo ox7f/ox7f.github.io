@@ -11,7 +11,6 @@ This challenge contained a Prototype Pollution to RCE via AST Injection. You can
 The webpage looks like this:
 ![](/assets/img/blitzProb_web.png#center)
 
-
 ## Vulnerability
 Going through the source code, we can see in the file `routes/index.js` that the function "unflatten" is called after receiving a post request:
 
