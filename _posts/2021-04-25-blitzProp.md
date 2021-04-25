@@ -61,8 +61,6 @@ fetch('/api/submit', {
 		}
 	}),
 	headers: {'Content-Type': 'application/json'}
-}).then(r => {
-	return r.text();
 })
 ```
 
