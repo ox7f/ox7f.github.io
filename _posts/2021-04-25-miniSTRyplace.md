@@ -6,7 +6,7 @@ tags: [cyberapocalpyse2021]
 toc: false
 ---
 
-This challenge contains a LFI vulnerability. You can read more about it in this [article](https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601/). (\* ^ ω ^)
+This challenge contains a _LFI_ vulnerability. You can read more about it in this [article](https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601/). (\* ^ ω ^)
 
 The webpage looks like this:
 ![](/assets/img/miniSTRyplace_web.png#center)
@@ -37,10 +37,10 @@ Let's take a look at the index file `index.php`:
 </html>
 ```
 
-We can see it checks if the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing path traversal and access to the flag.
+We can see it checks if the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing _path traversal_ and access to the flag.
 
 ## Exploitation
-With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag and read the flag:
+With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag and read it:
 
 > CHTB{b4d_4li3n_pr0gr4m1ng}
 
