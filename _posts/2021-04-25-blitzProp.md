@@ -49,8 +49,7 @@ After reviewing the `package.json` file we can see that "flat" “5.0.0” is in
 
 How do we exploit this? There are no _if_ branches to bypass in the code. The default object space only has functions to overwrite, but since we can only submit valid JSON, we cannot define our own functions.
 
-**Note:** This is because function definitions are not valid JSON.
-You can overwrite a function with a payload such as `{ 'Object.__proto__.toString': '() => return "Foo"' }` but it will eventually break everything, as a critical _function_ has now been redefined as a _string_.
+**Note:** This is because function definitions are not valid JSON.<br>You can overwrite a function with a payload such as `{ 'Object.__proto__.toString': '() => return "Foo"' }` but it will eventually break everything, as a critical _function_ has now been redefined as a _string_.
 
 We can achieve RCE if we can find an `exec()` or `eval()` statement anywhere in our application. Maybe Pug?
 
