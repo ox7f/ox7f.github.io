@@ -9,6 +9,7 @@ toc: false
 This challenge contains a _Prototype Pollution_ to RCE via _AST Injection_. You can read more about it in this great [blog](https://blog.p6.is/AST-Injection/) post. (\* ^ ω ^)
 
 Upon visiting the entry point, we are greeted with a aesthetic, futuristic looking feedback form. We are provided with a list of songs from a famous alien band named __Blitz Prop__ and asked to choose our favorite.
+
 ![](/assets/img/blitzProb_web.png#center)
 
 ## Vulnerability
