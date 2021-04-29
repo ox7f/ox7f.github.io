@@ -37,7 +37,7 @@ Let's take a look at the index file `index.php`:
 </html>
 ```
 
-We can see it checks if the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing _path traversal_ and access to the flag.
+We can see it checks _if_ the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing _path traversal_ and access to the flag.
 
 ## Exploitation
 With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag and read it:
