@@ -7,9 +7,6 @@ toc: false
 ---
 
 # Enumeration
-## Website
-We are presented with this Login page. We can neither log in nor register an account.
-![](/assets/img/armageddon_box.png#center)
 ## NMAP Scan
 This machines has only two open ports (22 and 80), we see that Apache 2.4.6 is serving Drupal 7 and PHP 5.4.16 - both are outdated and most likely vulnerable.
 ``` bash
@@ -31,6 +28,9 @@ PORT   STATE SERVICE VERSION
 | /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt 
 | /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php
 ```
+## Website
+Upon visiting the website on port 80 are presented with this Login page. We can neither log in nor register an account.
+![](/assets/img/armageddon_box.png#center)
 ## Vulnerability
 A quick look at searchsploit gives us a lot of stuff to try out.
 ``` bash
