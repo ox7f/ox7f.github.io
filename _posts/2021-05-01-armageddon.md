@@ -29,7 +29,7 @@ PORT   STATE SERVICE VERSION
 | /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php
 ```
 ## Website
-Upon visiting the website on port 80 are presented with this Login page. We can neither log in nor register an account.
+Upon visiting the website on port 80 we are presented with this Login page. We can neither log in nor register an account.
 ![](/assets/img/armageddon_box.png#center)
 ## Vulnerability
 A quick look at searchsploit gives us a lot of stuff to try out.
