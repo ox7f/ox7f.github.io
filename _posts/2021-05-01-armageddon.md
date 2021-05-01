@@ -1,8 +1,14 @@
-
+---
+title: Armageddon
+date: 2021-05-01 11:37:00 +0200
+categories: [machine]
+tags: [hackthebox]
+toc: false
+---
 
 # Enumeration
 ## Website
-We are presented with this Login page. We can neither log in nor register.
+We are presented with this Login page. We can neither log in nor register a account.
 ![](/assets/img/armageddon_box.png#center)
 ## NMAP Scan
 This machines has only two open ports (22 and 80), we see that Apache 2.4.6 is running Drupal 7 and PHP 5.4.16 - both are outdated and most likely vulnerable.
