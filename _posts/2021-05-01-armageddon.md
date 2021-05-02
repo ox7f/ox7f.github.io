@@ -100,7 +100,7 @@ $databases = array (
 Connect with `mysql -u drupaluser -D drupal -p` to the database. There are quite a few tables, but the most interesting one is the `user` table.
 
 So lets check the contents of that table with `SELECT * FROM users; exit;`, because of the broken metasploit shell we have to append _exit;_ to every query or we won't get any output. We could also try to fix the shell but we already got what we want. (^_~)
-``` mysql
+``` sql
 select * from users; exit;
 uid	name	pass	mail	theme	signature	signature_format	created	access	login	status	timezone	language	picture	init	data
 0						NULL	0	0	0	0	NULL		0		NULL
