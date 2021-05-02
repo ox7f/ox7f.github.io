@@ -10,10 +10,8 @@ This challenge contains a _LFI_ vulnerability. You can read more about it in thi
 
 The webpage looks like this:
 ![](/assets/img/miniSTRyplace_web.png#center)
-
 ## Vulnerability
 Let's take a look at the index file `index.php`:
-
 ```php
 <html>
     <header>
@@ -36,9 +34,7 @@ Let's take a look at the index file `index.php`:
     </body>
 </html>
 ```
-
 We can see it checks _if_ the param `lang` is given and if so it replaces “../” with a blank character.  If we submit “....//”, it becomes “../” allowing _path traversal_ and access to the flag.
-
 ## Exploitation
 With that knowledge we just visit http://[DOCKER-IP]/?lang=....//....//....//flag and read it:
 
