@@ -8,7 +8,7 @@ toc: false
 
 # Enumeration
 ## NMAP Scan
-This machines has only two open ports (22 and 80), we see that Apache 2.4.6 is serving Drupal 7 and PHP 5.4.16 - both are outdated and most likely vulnerable.
+This machines has only two open ports (22 and 80) - we see that Apache 2.4.6 is serving Drupal 7 and PHP 5.4.16 - both are outdated and most likely vulnerable.
 ``` bash
 ┌─[x7f@pWnbox]─[/ctf/hackthebox/machines/armageddon]
 └──╼ $sudo nmap -A -sC -sV 10.10.10.233
