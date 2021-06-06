@@ -51,10 +51,6 @@ Drupal < 7.34 - Denial of Service                                               
 Drupal < 7.58 - 'Drupalgeddon3' (Authenticated) Remote Code (Metasploit)                                                 | php/webapps/44557.rb
 Drupal < 7.58 - 'Drupalgeddon3' (Authenticated) Remote Code Execution (PoC)                                              | php/webapps/44542.txt
 Drupal < 7.58 / < 8.3.9 / < 8.4.6 / < 8.5.1 - 'Drupalgeddon2' Remote Code Execution                                      | php/webapps/44449.rb
-Drupal < 8.3.9 / < 8.4.6 / < 8.5.1 - 'Drupalgeddon2' Remote Code Execution (Metasploit)                                  | php/remote/44482.rb
-Drupal < 8.3.9 / < 8.4.6 / < 8.5.1 - 'Drupalgeddon2' Remote Code Execution (PoC)                                         | php/webapps/44448.py
-Drupal < 8.5.11 / < 8.6.10 - RESTful Web Services unserialize() Remote Command Execution (Metasploit)                    | php/remote/46510.rb
-Drupal < 8.6.10 / < 8.5.11 - REST Module Remote Code Execution                                                           | php/webapps/46452.txt
 ```
 # Exploitation
 After trying out some stuff the only thing working for me was this _metasploit_ module `exploit/unix/webapp/drupal_drupalgeddon2 - Drupal Drupalgeddon 2 Forms API Property Injection`.
