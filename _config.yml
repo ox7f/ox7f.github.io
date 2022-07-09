@@ -15,7 +15,7 @@ timezone: Europe/Berlin
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: 0x7f                  # the main title
+title: ox7f                  # the main title
 
 tagline: will post my write-ups and notes here # it will display as the sub-title
 
